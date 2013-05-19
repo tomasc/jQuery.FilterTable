@@ -6,29 +6,30 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="../jquery.filtertable.min.js"></script>
 	<script>
-	$(document).ready(function() {
-		$('table').filterTable({
-			quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island']
+		$(document).ready(function() {
+			$('table').filterTable({
+				quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island']
+			});
 		});
-	});
 	</script>
 	<style>
-	/* generic table styling */
-	table { border-collapse: collapse; }
-	th, td { padding: 5px; }
-	th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
-	td { border-bottom: 1px solid #ccc; }
-	table a { text-decoration: none; }
-	table a:hover { text-decoration: underline; }
-	tr :last-child { text-align: right; }
+		/* generic table styling */
+		table { border-collapse: collapse; }
+		th, td { padding: 5px; }
+		th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
+		td { border-bottom: 1px solid #ccc; }
+		table a { text-decoration: none; }
+		table a:hover { text-decoration: underline; }
+		tr :last-child { text-align: right; }
 
-	/* hide content from view but not from searching */
-	.hidden { display: none; }
+		/* hide content from view but not from searching */
+		.hidden { display: none; }
 
-	/* filter-table specific styling */
-	.filter-table .quick { margin-left: 1em; font-size: 0.8em; text-decoration: none; }
-	.fitler-table .quick:hover { text-decoration: underline; }
-	td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+		/* filter-table specific styling */
+		p.filter-table { margin: 0; }
+		ol.quick { margin: 0; margin-bottom: 1em; padding: 0; list-style: none; }
+		ol.quick li { display: inline; margin-right: 10px; }
+		td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 	</style>
 </head>
 <body>

@@ -15,8 +15,9 @@ Include the dependencies:
 <script src="/path/to/bindWithDelay.js"></script> <!-- optional -->
 <script src="/path/to/jquery.filtertable.js"></script>
 <style>
-.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-.fitler-table .quick:hover { text-decoration: underline; }
+p.filter-table { margin: 0; }
+ol.quick { margin: 0; margin-bottom: 1em; padding: 0; list-style: none; }
+ol.quick li { display: inline; margin-right: 10px; }
 td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 </style> <!-- or put the styling in your stylesheet -->
 ```
@@ -33,25 +34,32 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
-| `containerClass` | string | filter-table | Class applied to the main filter input container |
-| `containerTag` | string | p | Tag name of the main filter input container |
-| `highlightClass` | string | alt | Class applied to cells containing the filter term |
-| `inputType` | string | search | Tag name of the filter input itself |
-| `label` | string | Filter: | Text to precede the filter input |
-| `minRows` | integer | 8 | Only show the filter on tables with this number of rows or more |
-| `placeholder` | string | search this table | HTML5 placeholder text for the filter input |
-| `quickList` | array | [] | List of clickable phrases to quick fill the search |
-| `quickListClass` | string | quick | Class of each quick list item |
-| `callback` | function(`term`, `table`) | _null_ | Callback function after a filter is performed. Parameters: <ul><li><code>term</code> filter term (string)</li><li><code>table</code> table being filtered (jQuery object)</li></ul> |
+| `callback` | function(`term`, `$table`) | _null_ | callback function after a filter is performed
+| `columnSelector` | string | td | selector of table cells (td)
+| `containerClass` | string | filter-table | class of filter input container
+| `containerTag` | string | p | tag name of filter input container
+| `highlightClass` | string | alt | class added to matching table cells (td)
+| `inputName` | string | filter-table | name of filter input
+| `inputPlaceholder` | string | search this table | placholder in filter input
+| `inputType` | string | search | type of filter input
+| `inputLabel` | string | Filter: | label added before the filter input (null for no label)
+| `minRows` | integer | 8 | only show the filter on tables with this number of rows or more
+| `quickList` | array | [] | list of phrases to quick fill the search
+| `quickListContainerClass` | string | quick | class of quick list container
+| `quickListContainerTag` | string | ol | tag name of quick list container
+| `quickListItemClass` | string | quick | class of each quick list item
+| `quickListItemTag` | string | li | tag of each quick list item
+| `rowSelector` | string | tbody > tr | selector applied to table rows (tr)
+| `visibleClass` | string | visible | class added to visible rows
 
 ## Styling
 
 Suggested styling:
 
 ```css
-.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-.fitler-table .quick:hover { text-decoration: underline; }
+p.filter-table { margin: 0; }
+ol.quick { margin: 0; margin-bottom: 1em; padding: 0; list-style: none; }
+ol.quick li { display: inline; margin-right: 10px; }
 td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 ```
 
@@ -77,6 +85,13 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.5
+
+- Rewrite to CoffeeScript
+- Support for custom row and cell selectors
+- Adjustments to generated markup (quick list is now a real list)
+- Further options to customize markup (tag and class names)
+
 ### 1.4
 
 - Fixed a bug with filtering rarely showing rows that did not have a match with the search query.
@@ -100,7 +115,7 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 (The MIT License)
 
-Copyright (c) 2012 Sunny Walker <swalker@hawaii.edu>
+Copyright (c) 2013 Sunny Walker <swalker@hawaii.edu> & Tomas Celizna <tomas.celizna@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
